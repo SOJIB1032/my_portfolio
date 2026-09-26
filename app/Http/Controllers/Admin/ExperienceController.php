@@ -47,7 +47,6 @@ class ExperienceController extends Controller
             'start_date'=>'nullable|string|max:30',
             'end_date'=>'nullable|string|max:30',
             'description'=>'nullable|string',
-            'website_url'=>'nullable|url|max:255',
         ]);
 
         $experience->update($data);

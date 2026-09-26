@@ -80,7 +80,7 @@
                 <?php echo e($e->group); ?>
 
             </span>
-        <?php endif; ?>
+        <?php endif; ?> 
     </p>
 
     <?php if($e->description): ?>
@@ -135,7 +135,6 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     <?php endif; ?>
-
 </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </div>
@@ -217,10 +216,32 @@
   <h3 class="text-lg font-semibold">Contact Me</h3>
   <p class="text-sm text-slate-500 mt-1">
     Have a project in mind or just want to say hi?
-    <?php if(!empty($profile->email)): ?> Reach me at <a href="mailto:<?php echo e($profile->email); ?>" class="text-indigo-600"><?php echo e($profile->email); ?></a> <?php endif; ?>
-    <?php if(!empty($profile->phone)): ?> or call <?php echo e($profile->phone); ?>. <?php endif; ?>
-    Or send a message directly below — it goes straight to my admin inbox.
+    <?php if(!empty($profile->email)): ?>
+    Reach me at
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<?php echo e($profile->email); ?>&su=Portfolio%20Contact&body=Hello%2C%20I%20would%20like%20to%20contact%20you."
+       target="_blank"
+       class="text-indigo-600">
+        <?php echo e($profile->email); ?>
+
+    </a>
+    also reach me at 
+    <a href="tel:<?php echo e($profile->phone); ?>" class="text-indigo-600">
+    <?php echo e($profile->phone); ?>
+
+</a>
+
+<?php endif; ?>
+    Or send a message directly below — it goes straight to my inbox.
   </p>
+  <p class="text-sm text-slate-500 mt-1 mb-2"> &  This my LinkedIn Profile</p>
+  
+
+<a href="<?php echo e($profile->linkedin_url); ?>"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="inline-block bg-indigo-600 text-white rounded-2xl px-4 py-2 touch-btn">
+    View LinkedIn Profile
+</a>
 
   <?php if(session('success')): ?>
     <div class="mt-3 text-green-600"><?php echo e(session('success')); ?></div>
@@ -228,8 +249,10 @@
 
   <form action="<?php echo e(route('contact.send')); ?>" method="POST" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
     <?php echo csrf_field(); ?>
+    
     <input name="name" placeholder="Your name" value="<?php echo e(old('name')); ?>" class="border p-3 rounded-lg" required />
     <input name="email" type="email" placeholder="Email" value="<?php echo e(old('email')); ?>" class="border p-3 rounded-lg" required />
+    <input name="phone" placeholder="Phone" value="<?php echo e(old('phone')); ?>" class="border p-3 rounded-lg" required />
     <input name="subject" placeholder="Subject" value="<?php echo e(old('subject')); ?>" class="border p-3 rounded-lg md:col-span-2" />
     <textarea name="message" placeholder="Message" rows="5" class="border p-3 rounded-lg md:col-span-2" required><?php echo e(old('message')); ?></textarea>
     <div class="md:col-span-2 flex justify-end">

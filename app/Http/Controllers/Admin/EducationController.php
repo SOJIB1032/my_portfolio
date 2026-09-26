@@ -24,7 +24,7 @@ class EducationController extends Controller
         $data = $req->validate([
             'degree'=>'required|string|max:191',
             'institution'=>'required|string|max:191',
-            'group'=>'nullable|in:Science,Commerce,Arts',
+            'group'=>'nullable|in:Science,Commerce,Arts,B.Sc,BA,BBA,MA,MBA,MSC',
             'start_year'=>'nullable|string|max:20',
             'end_year'=>'nullable|string|max:20',
             'description'=>'nullable|string',
@@ -44,7 +44,7 @@ class EducationController extends Controller
         $data = $req->validate([
             'degree'=>'required|string|max:191',
             'institution'=>'required|string|max:191',
-            'group'=>'nullable|in:Science,Commerce,Arts',
+            'group'=>'nullable|in:Science,Commerce,Arts,B.Sc,BA,BBA,MA,MBA,MSC',
             'start_year'=>'nullable|string|max:20',
             'end_year'=>'nullable|string|max:20',
             'description'=>'nullable|string',

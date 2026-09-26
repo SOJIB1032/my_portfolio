@@ -12,6 +12,10 @@
       <label class="text-sm font-medium text-slate-600">Institution</label>
       <input name="institution" value="<?php echo e(old('institution', $education->institution)); ?>" class="w-full mt-1 border p-3 rounded-xl" required />
     </div>
+    <div>
+      <label class="text-sm font-medium text-slate-600">Group</label>
+      <input name="group" value="<?php echo e(old('group', $education->group)); ?>" class="w-full mt-1 border p-3 rounded-xl" required />
+    </div>
     <div class="grid grid-cols-2 gap-4">
       <div>
         <label class="text-sm font-medium text-slate-600">Start Year</label>

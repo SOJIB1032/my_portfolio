@@ -78,7 +78,7 @@
             <span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full ml-1">
                 {{ $e->group }}
             </span>
-        @endif
+        @endif 
     </p>
 
     @if($e->description)
@@ -211,10 +211,30 @@
   <h3 class="text-lg font-semibold">Contact Me</h3>
   <p class="text-sm text-slate-500 mt-1">
     Have a project in mind or just want to say hi?
-    @if(!empty($profile->email)) Reach me at <a href="mailto:{{ $profile->email }}" class="text-indigo-600">{{ $profile->email }}</a> @endif
-    @if(!empty($profile->phone)) or call {{ $profile->phone }}. @endif
-    Or send a message directly below — it goes straight to my admin inbox.
+    @if(!empty($profile->email))
+    Reach me at
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $profile->email }}&su=Portfolio%20Contact&body=Hello%2C%20I%20would%20like%20to%20contact%20you."
+       target="_blank"
+       class="text-indigo-600">
+        {{ $profile->email }}
+    </a>
+    also reach me at 
+    <a href="tel:{{ $profile->phone }}" class="text-indigo-600">
+    {{ $profile->phone }}
+</a>
+
+@endif
+    Or send a message directly below — it goes straight to my inbox.
   </p>
+  <p class="text-sm text-slate-500 mt-1 mb-2"> &  This my LinkedIn Profile</p>
+  
+
+<a href="{{ $profile->linkedin_url }}"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="inline-block bg-indigo-600 text-white rounded-2xl px-4 py-2 touch-btn">
+    View LinkedIn Profile
+</a>
 
   @if(session('success'))
     <div class="mt-3 text-green-600">{{ session('success') }}</div>
@@ -222,8 +242,10 @@
 
   <form action="{{ route('contact.send') }}" method="POST" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
     @csrf
+    
     <input name="name" placeholder="Your name" value="{{ old('name') }}" class="border p-3 rounded-lg" required />
     <input name="email" type="email" placeholder="Email" value="{{ old('email') }}" class="border p-3 rounded-lg" required />
+    <input name="phone" placeholder="Phone" value="{{ old('phone') }}" class="border p-3 rounded-lg" required />
     <input name="subject" placeholder="Subject" value="{{ old('subject') }}" class="border p-3 rounded-lg md:col-span-2" />
     <textarea name="message" placeholder="Message" rows="5" class="border p-3 rounded-lg md:col-span-2" required>{{ old('message') }}</textarea>
     <div class="md:col-span-2 flex justify-end">
